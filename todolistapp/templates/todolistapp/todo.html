@@ -1,0 +1,39 @@
+{% extends "todolistapp/base.html" %}
+{% load my_custom_tag %}
+
+{% block title %}
+    Todo List
+{% endblock %}
+
+{% block body_content %}
+    <h4 style="padding-left: 400px;padding-bottom: 40px;padding-top: 30px"> Welcome to my Todo List </h4>
+    <div class="d-flex justify-content-center">
+        <table class="table table-striped">
+            <thead class="text-center">
+            <tr>
+                <td>Task</td>
+                <td>Priority</td>
+                <td>Description</td>
+                <td>Is Finish</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            {% for key, value in my_todo.items %}
+                <tr>
+
+                    <td>{{ value.name}}</td>
+                    <td>{{ value.Priority }}</td>
+                    <td>{{ value.description | truncatewords:2 }}</td>
+                    <td>{{ value.finished}}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url "todo:todo_delete" key %}">Delete</a>
+                        <a class="btn btn-success" href="{% url "todo:todo_done" key %}">Finished</a>
+                        <a class="btn btn-info" href="{% url "todo:todo_details" key %}">Task Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

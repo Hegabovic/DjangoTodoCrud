@@ -1,0 +1,18 @@
+{% extends "todolistapp/base.html" %}
+
+{% block title %}
+    Task Details
+{% endblock %}
+
+{% block body_content %}
+    <div>
+        <h2> Task {{ my_details.name }} details : </h2>
+
+        <ul>
+            <li> <span style="font-weight: bold;color:red;"> Description : </span>{{ my_details.description }}</li>
+            <li><span style="font-weight: bold;color:red;"> Priority : </span>{{ my_details.Priority }}</li>
+            <li><span style="font-weight: bold;color:red;"> Finished : </span>{{ my_details.finished }}</li>
+        </ul>
+        <a class="btn btn-success" href="{% url "todo:template" %}">Home</a>
+    </div>
+{% endblock %}
